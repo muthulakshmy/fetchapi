@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+    <div>
+        <h1>Pokemon</h1>
+    <select name="pokemon" id="pokemon">
+  
+    </select>
+    </div>
+</body>
+    <script>
+        let url=`https://pokeapi.co/api/v2/ability`
+
+fetch(url)
+   .then(response => response.json())
+   .then(data => {
+        console.log(data)
+    console.log("ertyuijk")
+    console.log(data.results[1].name)
+    let value=data.results
+    let select=document.querySelector('#pokemon')
+      value.forEach((element) => {
+        console.log("esrdftyghujk")
+        console.log(element)
+        console.log(element.name)
+        let name=element.name
+        let option=document.createElement('option')
+        option.innerText=name
+        select.appendChild(option)
+      })
+})
+    </script>
+</html>

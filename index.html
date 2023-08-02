@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <select name="pokemon" id="pokemon">
+  
+</select>
+</body>
+    <script>
+        console.log("ertyuijk")
+        const poke=[{"name":"drizzle","url":"https://pokeapi.co/api/v2/ability/2/"},
+    {"name":"speed-boost","url":"https://pokeapi.co/api/v2/ability/3/"},
+    {"name":"battle-armor","url":"https://pokeapi.co/api/v2/ability/4/"},
+    {"name":"sturdy","url":"https://pokeapi.co/api/v2/ability/5/"},
+    {"name":"damp","url":"https://pokeapi.co/api/v2/ability/6/"},
+    {"name":"limber","url":"https://pokeapi.co/api/v2/ability/7/"},
+    {"name":"sand-veil","url":"https://pokeapi.co/api/v2/ability/8/"},
+    ]
+    console.log("ertyuijk")
+    let select=document.querySelector('#pokemon')
+    poke.forEach((value)=>{
+        console.log("dertyu")
+        let option=document.createElement('option')
+        option1=value.name
+        option.innerText=option1
+        console.log(option1)
+        select.appendChild(option)
+    })
+    </script>
+</html>
