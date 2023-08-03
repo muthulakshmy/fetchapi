@@ -4,11 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-
+<style>
+    #pokemon{
+        width:200px;
+    }
+</style>
 </head>
 <body>
     <div>
         <h1>Pokemon API</h1>
+        <div id="msg"></div>
         <select name="pokemon" id="pokemon">
   
         </select>
@@ -29,5 +34,21 @@ fetch(url)
         select.appendChild(option)
       })
 })
+.catch(error => {
+       
+    let message=document.getElementById('msg')
+            // throw new Error(  ` my error ${response.status}`)
+            let para=document.createElement('h1')
+
+            para.innerHTML="data not found"
+            message.appendChild(para)
+            console.log(para)
+            console.log(error)
+        
+       
+
+})
+
+
     </script>
 </html>
