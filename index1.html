@@ -29,14 +29,16 @@
         <select name="pokemon" id="pokemon">
   
         </select>
+        <div id="display"></div>
     </div>
 </body>
     <script>
-        let url=`https://pokeapi.co/api/v2/ability/ertyu`
+        let url=`https://pokeapi.co/api/v2/ability/`
 
 fetch(url)
    .then(response => response.json())
    .then(data => {   
+    let display=document.getElementById('display')
     let value=data.results
     let select=document.querySelector('#pokemon')
       value.forEach((element) => {
@@ -52,8 +54,6 @@ fetch(url)
             para.innerHTML="data not found"
             para.style.color="darkblue"
             message.appendChild(para)
-            console.log(para)
-            console.log(error)
             let select=document.querySelector('#pokemon')
             select.style.display="none"
             let header=document.getElementById('heading')
