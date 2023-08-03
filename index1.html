@@ -8,10 +8,10 @@
 </head>
 <body>
     <div>
-        <h1>Pokemon</h1>
-    <select name="pokemon" id="pokemon">
+        <h1>Pokemon API</h1>
+        <select name="pokemon" id="pokemon">
   
-    </select>
+        </select>
     </div>
 </body>
     <script>
@@ -19,16 +19,10 @@
 
 fetch(url)
    .then(response => response.json())
-   .then(data => {
-        console.log(data)
-    console.log("ertyuijk")
-    console.log(data.results[1].name)
+   .then(data => {   
     let value=data.results
     let select=document.querySelector('#pokemon')
       value.forEach((element) => {
-        console.log("esrdftyghujk")
-        console.log(element)
-        console.log(element.name)
         let name=element.name
         let option=document.createElement('option')
         option.innerText=name
