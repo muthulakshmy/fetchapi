@@ -15,9 +15,19 @@
     body{
         background-image: url("poke1.jpg");
         background-repeat: no-repeat;
-        /* background-image: cover; */
         background-size: 100%;
-        /* visibility:visible; */
+        background-blend-mode:lighten;
+        /* background-image-opacity: 8px; */
+    }
+    img{
+        opacity: 50%;
+    }
+    #para{
+        background-color: white;
+        color:black;
+        width: 200px;
+        border-radius: 5px;
+        font-family: cursive;
     }
     
 </style>
@@ -29,15 +39,28 @@
         <select name="pokemon" id="pokemon">
   
         </select>
+        <p id="para"></p>
         <div id="display"></div>
     </div>
 </body>
     <script>
+           
         let url=`https://pokeapi.co/api/v2/ability/`
-
+        async function Data(url) {
+            try {
+                const response = await fetch(url);
+                if (!response.ok) {
+                    throw new Error(`Error ${response.status}`);
+                }
+                return response.json();
+            } catch (error) {
+                throw new Error(error);
+            }
+        }
 fetch(url)
    .then(response => response.json())
-   .then(data => {   
+   .then(data => {  
+    let paragraph=document.getElementById("para") 
     let display=document.getElementById('display')
     let value=data.results
     let select=document.querySelector('#pokemon')
@@ -46,9 +69,26 @@ fetch(url)
         let option=document.createElement('option')
         option.innerText=name
         select.appendChild(option)
+        
+        
       })
+     
+      select.addEventListener("change", async () => {
+                    paragraph.innerHTML = ""; 
+                    const pokemonName = select.value;
+                    const pokemonUrl = value.find(ability => ability.name === pokemonName);
+                    if (pokemonUrl) {
+                        const pokemondata = await Data(pokemonUrl.url);
+                        console.log(pokemonUrl.url)
+                        const displayData = document.createElement("p");
+                        displayData.innerText = pokemondata.effect_entries[1].effect
+                        console.log(pokemondata[0])
+                        console.log(displayData.innerText)
+                        paragraph.appendChild(displayData);
+                    }
+                });
 })
-.catch(error => {
+.catch((error) => {
     let message=document.getElementById('msg')
             let para=document.createElement('h1')
             para.innerHTML="data not found"
@@ -57,9 +97,7 @@ fetch(url)
             let select=document.querySelector('#pokemon')
             select.style.display="none"
             let header=document.getElementById('heading')
-            header.style.display="none"        
-     
-
+            header.style.display="none"
 })
 
 
